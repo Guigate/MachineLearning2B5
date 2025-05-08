@@ -3,10 +3,10 @@ import shutil
 import random
 
 # Paramètres
-dataset_dir = 'dataset' 
-original_dirs = ['train', 'val', 'test']
+dataset_dir = ''  # à adapter
+original_dirs = ['TRAIN', 'VALID', 'TEST']
 new_base_dir = os.path.join(dataset_dir, 'reorganized_dataset')
-split_ratios = {'train': 0.7, 'val': 0.15, 'test': 0.15}
+split_ratios = {'TRAIN': 0.7, 'VALID': 0.15, 'TEST': 0.15}
 
 # Créer les nouveaux dossiers
 for split in split_ratios:
@@ -20,7 +20,7 @@ med_names = [name for name in os.listdir(sample_dir) if os.path.isdir(os.path.jo
 for med in med_names:
     print(f"Traitement de {med}...")
 
-    # Rassembler toutes les images de tous les dossiers (train, val, test)
+    # Rassembler toutes les images de tous les dossiers (TRAIN, VALID, TEST)
     all_images = []
     for folder in original_dirs:
         med_folder = os.path.join(dataset_dir, folder, med)
@@ -32,14 +32,14 @@ for med in med_names:
 
     # Calcul des tailles
     total = len(all_images)
-    train_end = int(split_ratios['train'] * total)
-    val_end = train_end + int(split_ratios['val'] * total)
+    TRAIN_end = int(split_ratios['TRAIN'] * total)
+    VALID_end = TRAIN_end + int(split_ratios['VALID'] * total)
 
     # Répartition
     split_data = {
-        'train': all_images[:train_end],
-        'val': all_images[train_end:val_end],
-        'test': all_images[val_end:]
+        'TRAIN': all_images[:TRAIN_end],
+        'VALID': all_images[TRAIN_end:VALID_end],
+        'TEST': all_images[VALID_end:]
     }
 
     # Copier les images dans la nouvelle structure
