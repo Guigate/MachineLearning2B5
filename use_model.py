@@ -7,7 +7,7 @@ import os
 # Paramètres
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 img_size = 224
-num_classes = 5  # Remplacez par le nombre exact de classes
+num_classes = 5  
 
 # Chargement du modèle
 model = models.mobilenet_v2(pretrained=False)
@@ -75,10 +75,12 @@ def predict_folder(folder_path):
     print(f"Classe Myra_E: {F}, {F*100//(A+B+D+E+F)}%")
     print(f"Nombre total d'images: {A+B+D+E+F}")
 # Exemple d'utilisation
-# predict_folder("reorganized_dataset/TEST/DayZinc")  # Remplacez "test_images" par le chemin de votre dossier
-# predict_folder("reorganized_dataset/TEST/Ascozin")  # Remplacez "test_images" par le chemin de votre dossier
-# predict_folder("reorganized_dataset/TEST/Bioflu")  # Remplacez "test_images" par le chemin de votre dossier
-# predict_folder("reorganized_dataset/TEST/Decolgen")  # Remplacez "test_images" par le chemin de votre dossier
-# predict_folder("reorganized_dataset/TEST/Myra_E")  # Remplacez "test_images" par le chemin de votre dossier
-# predict_folder("demo")  # Remplacez "test_images" par le chemin de votre dossier
-predict_folder("TEST/Myra_E")  # Remplacez "test_images" par le chemin de votre dossier
+# predict_folder("test_images")  # Remplacez "test_images" par le chemin de votre dossier
+
+# predict_folder("reorganized_dataset/TEST/DayZinc")  
+# predict_folder("reorganized_dataset/TEST/Ascozin")  
+# predict_folder("reorganized_dataset/TEST/Bioflu") 
+# predict_folder("reorganized_dataset/TEST/Decolgen")  
+# predict_folder("reorganized_dataset/TEST/Myra_E")  
+# predict_folder("demo")  
+predict_folder("TEST/Myra_E")  
